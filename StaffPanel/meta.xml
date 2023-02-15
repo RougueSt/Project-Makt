@@ -1,0 +1,5 @@
+<meta>
+	<info author="VSCode MTA:SA Lua" type="script" name="StaffPanel" />
+	<script src="c_StaffPanel.lua" type="client" cache="false" />
+	<script src="s_StaffPanel.lua" type="server" />
+</meta>

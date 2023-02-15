@@ -1,0 +1,8 @@
+﻿<meta>
+	<info author="KaMiKaZe" version="0.6" name="Manual Turret" description="Turret" type="script" />
+	<script src="turret_s.lua" type="server" />
+	<script src="turret_c.lua" type="client" />	
+	
+	<file src="files/crosshud.png" />
+	<export function="createMortar" type="server" />
+</meta>

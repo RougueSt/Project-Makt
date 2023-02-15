@@ -1,0 +1,5 @@
+<meta>
+	<info type="script" name="color-nametags" author="John Smith, Dutchman101" version="1.3" description="HEX colorcodes in player nicknames now show in the tag above their head!" />
+	<oop>true</oop>
+	<script src="colornametags.lua" type="client" />
+</meta>
