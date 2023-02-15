@@ -1,1 +1,0 @@
--- Código de aplicação do sistema de classes para os jogadores
