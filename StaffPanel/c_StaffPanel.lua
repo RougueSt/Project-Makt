@@ -116,3 +116,7 @@ end
 
 addEvent('bindar', true)
 addEventHandler('bindar', localPlayer, bindar)
+
+addEventHandler('onClientResourceStart', getResourceRootElement(), function()
+    triggerServerEvent('StaffPanel:Download', localPlayer)
+end)
