@@ -51,29 +51,26 @@ end)
 -- funções para adicionar os dados, e fazerem eles funcionar de verdade
 
 addEventHandler('onPlayerWasted', root, function(_, killer)
-    local conta = getPlayerAccount(source)
-    if not killer then
-        if getElementData(source, 'start') then
-            setElementData(source, 'deaths', getElementData(source,'deaths') + 1)
-        end
+    if not getElementData(source, 'start') then
+        iprint('não começou')
         return
     end
-    if getElementType(killer) == 'vehicle' then
-        setElementData(source, 'deaths', getElementData(source,'deaths') + 1)
-        return
-    end
-    if getElementType(killer) == 'object' then
-        setElementData(source, 'deaths', getElementData(source,'deaths') + 1)
-        return
-    end
-    if source == killer then 
-        setElementData(source, 'deaths', getElementData(source,'deaths') + 1)
-        return
-    end
+    local contaSource = getPlayerAccount(source)
+    local infoSource = fromJSON(getAccountData(contaSource, 'JSON')) -- PEGA AS TABELAS COM INFORMAÇÔES
 
-    setElementData(source, 'deaths', getElementData(source,'deaths') + 1)
-    setElementData(killer, 'kills', getElementData(source,'kills') + 1)
-    setElementData(killer, 'points', getElementData(source,'points') + 1)
+    local deaths = tonumber(infoSource['deaths']) -- toda informação de stats deve ser passada para tunumber()
+    infoSource['deaths'] = deaths + 1
+    setAccountData(contaSource, 'JSON', toJSON(infoSource))  --Seta a informação primeiro do cara que morreu, pra depois verificar se quem matou foi um player ou não
+    
+    if isElement(killer) or getElementType(killer) == 'player' then
+        local contaKiller = getPlayerAccount(killer)
+        local infoKiller = fromJSON(getAccountData(contaKiller, 'JSON'))
+        local kills = tonumber(infoKiller['kills'])
+        infoKiller['kills'] = kills + 1
+    end
+    
+    
+
 end)
 
 
