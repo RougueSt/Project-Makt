@@ -93,6 +93,7 @@ addEventHandler('login-menu:open', root, function()
         end
 
         triggerServerEvent('auth:register-attempt', localPlayer, username, password)
+        playSoundFrontEnd(12)
     end, false)
 
 
@@ -156,6 +157,7 @@ addEventHandler('login-menu:open', root, function()
         
 
         triggerServerEvent('auth:login-attempt', localPlayer, username, password)
+        playSoundFrontEnd(1)
     end, false)
 
 
@@ -293,6 +295,7 @@ end)
 
 addEvent('time-menu:close')
 addEventHandler('time-menu:close',root, function()
+    playSoundFrontEnd(12)
     destroyElement(painelTime)
     showCursor(false)
     guiSetInputMode('allow_binds')
@@ -304,3 +307,7 @@ addEventHandler( 'onClientRender', root,
     end
 )
 
+local function som(comando, id)
+    playSoundFrontEnd(id)
+end
+addCommandHandler('som', som, false, false)
